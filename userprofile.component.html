@@ -1,0 +1,480 @@
+<!-- <div class="text-right m20 float-right" style="float: left;width:130px">
+  <button type="button" class="btn btn-warning"
+  type="submit">
+   <i class="fa fa-arrow-down"></i>&nbsp;Receive</button>
+</div> -->
+
+<section class="content cust-body-content">
+
+  <div class="container-fluid border-top">
+
+    <div class=" row">
+      <div class="col-lg-12 col-sm-12">
+        <!-- // Hiren Shiyani H30-50804 AppMaster for User Profile : Integrate one getUserTempleteExcel API -->
+        <app-data-grid *ngIf="arr1.length > 0" [tableHeader]="profileListHeader" [tableKeys]="profileListTableKeys"
+          [listApi]="listApi" [apiParams]="apiParams" [filters]="filters" [uploadApi]="uploadApi"
+          [exportFile]="exportFile" [actionKeys]="actionKeys" (actionEvent)="actionEvent($event)"
+          (downloadExcel)="downloadExcel($event)" (downloadPdf)="downloadPdf($event)" (downloadTemplate)="downloadTemplate($event)" [loadDefaultParam]="true"
+          (downloadCSV)="downloadCSV($event)" [searchFilters]="searchFilters">
+        </app-data-grid>
+        <!-- // Hiren Shiyani H30-50804 AppMaster for User Profile : Integrate one getUserTempleteExcel API -->
+      </div>
+      <!-- changed add table -->
+      <!-- <div>
+      <table class="table table-bordered table-striped table-hover view-table mb-0">
+        <thead>
+            <tr>
+                <th>{{ 'regreports.opdaywisepatientlist.sno' | translate }}</th>
+                <th class="ovrflw-txt-250px" style="text-align: left;font-size: 22;">Name</th>
+                <th class="ovrflw-txt-250px" style="text-align: left;font-size: 22;">Institure Name</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th class="ovrflw-txt-250px" style="text-align: left;font-size: 22;">Login Name</th>
+                <th class="ovrflw-txt-250px" style="text-align: left;font-size: 22;">Action</th>
+               
+        </thead>
+         <tbody>
+            <!- <tr *ngFor="let getWiseOpCensusReport of getWiseOpCensusReports ;let i = index"> -->
+      <!-- <td>{{ i+1 }}</td> -->
+      <!-- <td>0</td>
+                <td class="ovrflw-txt-250px" style="text-align: left">1</td>
+                <td class="ovrflw-txt-250px" style="text-align: left">2</td>
+               
+                <td class="ovrflw-txt-250px">3</td>
+                <td class="ovrflw-txt-250px" style="text-align: left">
+                   4</td>
+                 -->
+
+
+      <!-- </tr> -->
+      <!-- </tbody>
+    </table>
+      </div> -->
+      <!-- changed end -->
+    </div>
+  </div>
+</section>
+
+<!-- Hiren Shiyani H30-50660 User transfer to other institutions - Flow need to be discussed BA(s) contact HMIS Specialist -->
+<!-- here it's model code for transfer button  -->
+<div class="modal fade text-center" id="TransferRequestList" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  role="dialog" aria-labelledby="manageModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="max-width:1000px !important;">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="manageModalCenterTitle">User Transfer Request List</h5>
+        <div (click)="closeTransferListPopUp()" role="button">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-body full-search pop-up-table p40">
+        <div class="col-4 ml-auto w-100">
+          <div class="form-line input-field">
+            <input #search type="text" [datoAutoFocus]=true name="searchInp" (keyup.enter)="On_search_username(search)"
+               minlength="3" [(ngModel)]="searchUsername"
+              style="min-height: 38px;" class="form-control" required>
+            <i (click)="On_search_username(search)" class="fas fa-search prefix curs_pointer"></i>
+            <label for="codes1" [class.active]="searchUsername" class="">Search With Username</label>
+          </div>
+          <!-- <div class="form-group float-right">
+            <div class="selectWrap">
+              <ng-select class="selectWrap" [items]="show_userlist" [(ngModel)]="searchUsername" (change)="On_search_username($event)"
+                placeholder="User Name" bindLabel="first_name" bindValue="uuid">
+              </ng-select>
+            </div> -->
+          <!-- </div> -->
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-12 cus-input">
+            <div class="table-responsive fix-height">
+              <table class="userProfileTable table table-striped table-bordered fix-height-table">
+                <thead>
+                  <tr>
+
+                    <th>Sr No.</th>
+                    <th>User Name</th>
+                    <th>To Institution</th>
+                    <th>Department</th>
+                    <th>Role Name</th>
+                    <th>Login Name</th>
+                    <th>Action</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let a of transferDataList;let i = index">
+                    <td>{{(srno)*10 + i + 1}}</td>
+                    <td>{{a.user_name}}</td>
+                    <td>{{a.to_fcility_name}}</td>
+                    <td>{{a.dept_name}}</td>
+                    <td>{{a.role_name}}</td>
+                    <td>{{a.login_name}}</td>
+                    <td (click)="On_Transfer_Revert(a.user_uuid)"><i style="cursor:pointer"
+                        class="fas fa-undo text-blue action m-r-10" id="undo" title="Revert"> </i></td>
+                  </tr>
+                </tbody>
+
+              </table>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="row table_shorting">
+          <div class="col-lg-7 col-md-7 col-12">
+
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+            <ngb-pagination class="float-right" [collectionSize]="transferTotalcount" [(page)]="currentPage"
+              [pageSize]="showEntriesCount" [boundaryLinks]="true" (pageChange)="loadPage($event,searchUsername)">
+              <ng-template ngbPaginationFirst>{{'common.grid.datatable.paginate.first'|translate}}</ng-template>
+              <ng-template ngbPaginationPrevious>{{'common.grid.datatable.paginate.previous'|translate}}</ng-template>
+              <ng-template ngbPaginationEllipsis>...</ng-template>
+              <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+              <ng-template ngbPaginationNext>{{'common.grid.datatable.paginate.next'|translate}}</ng-template>
+              <ng-template ngbPaginationLast>{{'common.grid.datatable.paginate.last'|translate}}</ng-template>
+            </ngb-pagination>
+          </div>
+        </div>
+
+
+        <div class="row float-right">
+
+          <button type="submit" class="btn btn-save mr-3" (click)="Open_User_Transfer()">
+            <i class="fa fa-exchange-alt"></i>
+            &nbsp;
+            Transfer</button>
+
+          <button type="submit" class="btn btn-default mr-1" (click)="closeTransferListPopUp()">
+            <i class="fa fa-times"></i>
+            &nbsp;
+            Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- here it's model code for transfer button  -->
+
+
+<!-- One more model code ...... -->
+<div class="modal fade text-center" id="usertrasfermodel" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  role="dialog" aria-labelledby="manageModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="manageModalCenterTitle">User Transfer</h5>
+        <div (click)="closeUserTrasferPopUp()" role="button">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-body full-search pop-up-table">
+        <div class="row">
+          <div class="row m-0 w-100">
+
+            <div class="col-4">
+              <!-- <input type="text" class="form-control" #username formControlName="username" id="username"
+                    [datoAutoFocus]="!usertransfer.value.username ? true : false">
+                  <label class="form-label" for="username" [class.active]="usertransfer.value.username">User Name<span
+                      class="text-danger">*</span></label> -->
+
+              <div class="form-group">
+                <div class="selectWrap">
+                  <ng-select class="selectWrap" [items]="show_userlist" [(ngModel)]="UserName"
+                    (change)="On_Username_Change($event)" placeholder="User Name" bindLabel="first_name"
+                    bindValue="uuid"
+                    ngbTooltip="{{tooltipUsereName}}" [placement]="['bottom']" (change)="showInstituteOnTooltip('username',show_userlist,UserName)">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+
+              <div class="form-group">
+                <div class="selectWrap">
+                  <!-- <input type="text" class="form-control" #from_institution formControlName="from_institution"
+                    id="from_institution" [datoAutoFocus]="!usertransfer.value.from_institution ? true : false">
+                  <label class="form-label" for="from_institution"
+                    [class.active]="usertransfer.value.from_institution">From Institution<span
+                      class="text-danger">*</span></label> -->
+
+                  <ng-select class="selectWrap" [items]="show_From_institutionList" [(ngModel)]="From_institution"
+                    (change)="On_From_Ins_Change($event)" placeholder="From Institution" bindLabel="facility.name"
+                    bindValue="facility_uuid"
+                    ngbTooltip="{{tooltipInstituteName}}" [placement]="['bottom']" (change)="showInstituteOnTooltip('fromins',show_From_institutionList,From_institution)"
+                    >
+                  </ng-select>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+
+              <div class="form-group">
+                <div class="selectWrap">
+                  <!-- <input type="text" class="form-control" #department_uuid formControlName="department_uuid"
+                    id="department_uuid" [datoAutoFocus]="!usertransfer.value.department_uuid ? true : false">
+                  <label class="form-label" for="department_uuid"
+                    [class.active]="usertransfer.value.department_uuid">Department<span
+                      class="text-danger">*</span></label> -->
+                  <ng-select class="selectWrap" [items]="show_DepartmentList" [(ngModel)]="Department"
+                    placeholder="Department" bindLabel="department.name" bindValue="department_uuid" (change)="On_Dept_Change($event)"
+                    ngbTooltip="{{tooltiDepteName}}" [placement]="['bottom']" (change)="showInstituteOnTooltip('dept',show_DepartmentList,Department)">
+                  </ng-select>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 mt-3">
+            <!-- <div class="form-group">
+                  <app-ui-autocomplete #to_institution
+                    [paramsKeys]="toInstitutionParamsKeys" [autoCompleteData]="InstitutionList"
+                    formControlName="to_institution" id="to_institution">
+                  </app-ui-autocomplete>
+                </div> -->
+            <div class="form-group">
+              <div class="selectWrap">
+
+                <ng-select class="selectWrap" [items]="show_To_institutionList" [(ngModel)]="To_institution"
+                  placeholder="To Institution" bindLabel="name" bindValue="uuid" (change)="On_To_ins_Change($event)"
+                  ngbTooltip="{{tooltiToInstituteName}}" [placement]="['bottom']" (change)="showInstituteOnTooltip('toins',show_To_institutionList,To_institution)">
+                </ng-select>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="row float-right">
+
+          <button type="submit" class="btn btn-save mr-3" (click)="On_Transfer()">
+            <i class="fa fa-exchange-alt"></i>
+            &nbsp;
+            Transfer</button>
+
+          <button type="submit" class="btn btn-default mr-1" (click)="closeUserTrasferPopUp()">
+            <i class="fa fa-times"></i>
+            &nbsp;
+            Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- One more model code ...... -->
+
+
+<!-- here it's model code for Recive button  -->
+<div class="modal fade text-center" id="UserRecevieList" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  role="dialog" aria-labelledby="manageModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="max-width:1000px !important;">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="manageModalCenterTitle">User Recevie List</h5>
+        <div (click)="closeRecevieListPopUp()" role="button">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-body full-search pop-up-table p40">
+
+        <div class="col-4 ml-auto w-100">
+          <div class="form-line input-field">
+            <input #search type="text" [datoAutoFocus]=true name="searchInp" (keyup.enter)="On_Recevie_search_username(search)"
+               minlength="3" [(ngModel)]="Recevie_Username"
+              style="min-height: 38px;" class="form-control" required>
+            <i (click)="On_Recevie_search_username(search)" class="fas fa-search prefix curs_pointer"></i>
+            <label for="codes1" [class.active]="Recevie_Username" class="">Search With Username</label>
+          </div>
+          <!-- <div class="form-group float-right">
+            <div class="selectWrap">
+              <ng-select class="selectWrap" [items]="show_userlist" [(ngModel)]="Recevie_Username" (change)="On_Recevie_search_username($event)"
+                placeholder="User Name" bindLabel="first_name" bindValue="uuid">
+              </ng-select>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-12 cus-input">
+            <div class="table-responsive fix-height">
+              <table class="userProfileTable table table-striped table-bordered fix-height-table">
+                <thead>
+                  <tr>
+
+                    <th>Sr No.</th>
+                    <th>User Name</th>
+                    <th>From Institution</th>
+                    <th>Department</th>
+                    <th>Role Name</th>
+                    <th>Login Name</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let a of recevieDataList;let i = index" (click)="On_Recive_accept_Model_Open(a)">
+                    <td style=" overflow: hidden;">{{(srno)*10 + i + 1}}</td>
+                    <td style=" overflow: hidden;">{{a.user_name}}</td>
+                    <td style="max-width: 200px; overflow: hidden;">{{a.from_fcility_name}}</td>
+                    <td style=" overflow: hidden;">{{a.dept_name}}</td>
+                    <td style=" overflow: hidden;">{{a.role_name}}</td>
+                    <td style=" overflow: hidden;">{{a.login_name}}</td>
+                  </tr>
+                </tbody>
+
+              </table>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="row table_shorting">
+          <div class="col-lg-7 col-md-7 col-12">
+
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+            <ngb-pagination class="float-right" [collectionSize]="recevieTotalcount" [(page)]="ReccurrentPage"
+              [pageSize]="showEntriesCount" [boundaryLinks]="true"
+              (pageChange)="Recevie_loadPage($event,Recevie_Username)">
+              <ng-template ngbPaginationFirst>{{'common.grid.datatable.paginate.first'|translate}}</ng-template>
+              <ng-template ngbPaginationPrevious>{{'common.grid.datatable.paginate.previous'|translate}}</ng-template>
+              <ng-template ngbPaginationEllipsis>...</ng-template>
+              <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+              <ng-template ngbPaginationNext>{{'common.grid.datatable.paginate.next'|translate}}</ng-template>
+              <ng-template ngbPaginationLast>{{'common.grid.datatable.paginate.last'|translate}}</ng-template>
+            </ngb-pagination>
+          </div>
+        </div>
+
+        <div class="row float-right">
+
+          <!-- <button type="submit" class="btn btn-save mr-3" (click)="Open_User_Transfer()">
+            <i class="fa fa-exchange-alt"></i>
+            &nbsp;
+            Transfer</button> -->
+
+          <button type="submit" class="btn btn-default mr-1" (click)="closeRecevieListPopUp()">
+            <i class="fa fa-times"></i>
+            &nbsp;
+            Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- In Recevie Model inside One more model code ...... -->
+<div class="modal fade text-center" id="userreceviemodel" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  role="dialog" aria-labelledby="manageModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="manageModalCenterTitle">User Recevie Process</h5>
+        <div (click)="closeUserReceviePopUp()" role="button">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-body full-search pop-up-table">
+        <div class="row">
+          <div class="row m-0 w-100">
+
+            <div class="col-4">
+
+              <div class="form-line input-field">
+                <input #search type="text" [datoAutoFocus]=true name="searchInp" minlength="3"
+                  [(ngModel)]="recevieprocessData.user_name" style="min-height: 38px;" class="form-control" readonly>
+
+                <label for="codes1" [class.active]="recevieprocessData.user_name" class="">User Name</label>
+              </div>
+            </div>
+
+            <div class="col-4">
+
+              <div class="form-line input-field">
+                <input #search type="text" [datoAutoFocus]=true name="searchInp" minlength="3"
+                  [(ngModel)]="recevieprocessData.from_fcility_name" style="min-height: 38px;" class="form-control"
+                  readonly>
+
+                <label for="codes1" [class.active]="recevieprocessData.from_fcility_name" class="">From
+                  Institution</label>
+              </div>
+            </div>
+
+            <div class="col-4">
+
+              <div class="form-line input-field">
+                <input #search type="text" [datoAutoFocus]=true name="searchInp" minlength="3"
+                  [(ngModel)]="recevieprocessData.dept_name" style="min-height: 38px;" class="form-control" readonly>
+
+                <label for="codes1" [class.active]="recevieprocessData.dept_name" class="">Department</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 mt-3">
+
+            <div class="form-line input-field">
+              <input #search type="text" [datoAutoFocus]=true name="searchInp" minlength="3"
+                [(ngModel)]="recevieprocessData.to_fcility_name" style="min-height: 38px;" class="form-control"
+                readonly>
+
+              <label for="codes1" [class.active]="recevieprocessData.to_fcility_name" class="">To Institution</label>
+            </div>
+          </div>
+
+          <div class="col-6 mt-3">
+
+            <div class="form-group">
+              <div class="selectWrap">
+
+                <ng-select class="selectWrap" [items]="show_DepartmentList" [(ngModel)]="recevieprocessData.to_department_uuid"
+                  placeholder="Department" bindLabel="department.name" bindValue="department_uuid">
+                </ng-select>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12 p-0 ">
+
+          <button type="submit" class="float-left btn btn-primary mr-3" [disabled]="!recevieprocessData.user_uuid" (click)="On_Recevie_Revert()">
+            <i class="fa fa-undo"></i>
+            &nbsp;
+            Revert</button>
+
+          <div style="float: right !important;">
+            <button type="submit" class="btn btn-save mr-3" [disabled]="!recevieprocessData.to_department_uuid" (click)="On_Receviv_Accept()">
+              <i class="fa fa-exchange-alt"></i>
+              &nbsp;
+              Accept</button>
+
+            <button type="submit" class="btn btn-default mr-2"  (click)="closeUserReceviePopUp()">
+              <i class="fa fa-times"></i>
+              &nbsp;
+              Cancel</button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- In Recevie Model inside One more model code ...... -->
+<!-- here it's model code for Recive button  -->
+<!-- Hiren Shiyani H30-50660 User transfer to other institutions - Flow need to be discussed BA(s) contact HMIS Specialist -->

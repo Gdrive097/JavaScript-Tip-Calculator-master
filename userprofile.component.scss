@@ -1,0 +1,31 @@
+// Hiren Shiyani H30-50660 User transfer to other institutions - Flow need to be discussed BA(s) contact HMIS Specialist 
+// model css show here......
+.modal-dialog-lg {
+    max-width: 1000px !important;
+    margin: 1.75rem auto;
+}
+
+.p40{
+    padding: 15px 35px !important;
+}
+// Hiren Shiyani H30-50660 User transfer to other institutions - Flow need to be discussed BA(s) contact HMIS Specialist 
+
+.userProfileTable{
+    tbody{
+        text-transform: capitalize !important;
+    }
+    tbody tr:hover {
+        color: #212529 !important;
+        background-color: rgba(0, 0, 0, 0.075) !important;
+    }
+    tbody td{
+        height: 32px !important;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    tbody th{
+        height: 33px !important;
+    }
+}

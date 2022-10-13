@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Responsive Menu</title>
+	
+	<link rel="stylesheet" type="text/css" href="icone/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="r-menu.css">
+
+	<script type="text/javascript" src="icone/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="icone/js/all.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// $('.mob_main_menu').hide();
+			  $('.mob_sub_menu').hide();
+			 $('.mob_peta_menu').hide();
+              
+				$('.icon').click(function(){
+					// $('.mob_main_menu').show();
+					// $('.mob_main_menu').toggle();
+					//$('.mob_main_menu').fadeIn();
+					// $('.mob_main_menu').fadeOut();
+					$('.mob_main_menu').slideToggle();
+					$('.mob_sub_menu').hide();
+					$('.mob_peta_menu').hide();
+					$('.icn').toggleClass('fa-bars , fa-times');
+				})
+				
+				
+				$('.mob_main_menu>li>a').click(function(){
+					//$('.mob_sub_menu').slideToggle();
+					$(this).parent('li').find('.mob_sub_menu').slideToggle();
+				     $('.mob_peta_menu').hide();
+				})
+				$('.mob_sub_menu>li>a').click(function(){
+					$(this).parent('li').find('.mob_peta_menu').slideToggle();
+                   
+				})
+				
+		})
+	</script>
+</head>
+<body>
+	<ul class="main_menu">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Products</a>
+			<!-- <ul class="sub_menu">
+				<li><a href="#">Product 1</a></li>
+				<li><a href="#">Product 1</a></li>
+				<li><a href="#">Product 1</a></li>
+				<li><a href="#">Product 1</a></li>
+			</ul> -->
+		</li>
+		<li><a href="#">Services</a></li>
+		<li><a href="#">About Us</a></li>
+		<li><a href="#">Contact Us</a></li>
+	</ul>
+	<div class="parent">
+	<div class="icon">
+		<i class="fas fa-bars icn"></i>
+	</div>
+
+	<ul class="mob_main_menu">
+		<li class="link1"><a href="#">home</a>
+			<ul class="mob_sub_menu">
+				<li><a href="#">Sub Link 1</a></li>
+				<li><a href="#">Sub Link 2</a>
+					<ul class="mob_peta_menu">
+						<li><a href="#">Sub Link 1</a></li>
+						<li><a href="#">Sub Link 2</a></li>
+						<li><a href="#">Sub Link 3</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Sub Link 3</a></li>
+			</ul>
+
+		</li>
+		<li><a href="#">products</a></li>
+		<li><a href="#">Services</a></li>
+		<li><a href="#">About Us</a></li>
+		<li><a href="#">Contact Us</a></li>
+	</ul>
+
+	</div>
+</body>
+</html>

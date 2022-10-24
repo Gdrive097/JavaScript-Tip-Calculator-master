@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard | Company</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Meta descriptions may be included in search results to concisely summarize page content.">
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <!-- Start-Dashboard-Page -->
+    <div class="wrapper">
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+
+        <!-- Start-Dashboard-Header -->
+        <header class="header">
+            <button type="button" class="menu-btn" title="Menu"><img src="./images/menu-icon.svg"
+                    alt="menu"></button>
+            <button type="button" class="search-btn">
+                <img src="./images/search-icon.svg" alt="search"><p>Search</p></button>
+                <a href="#">
+                    <img src="./images/logo.svg" alt="logo" class="logo">
+                    <img src="./images/logo-mobile.svg" alt="logo" class="logo-mobile">
+                </a>
+
+            <div class="dropdown message-dropdown">
+                <button class="message-btn dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" title="View Messages">
+                    <img src="./images/message-icon.svg" alt="message">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">item 1</a></li>
+                    <li><a class="dropdown-item" href="#">item 2</a></li>
+                    <li><a class="dropdown-item" href="#">item 3</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown notification-dropdown">
+                <button class="notification-btn dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" title="View Notifications">
+                    <img src="./images/notification-icon.svg" alt="notification">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    <h6>Notifications</h6>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="user-details">
+                                <img src="./images/robert-fox.png" alt="robert-fox">
+                                <div>
+                                    <h5 class="text-truncate">Robert Fox sent you friend request</h5>
+                                    <span>January 05 2022 12:11 PM</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="user-details">
+                                <img src="./images/esther-howard.png" alt="esther-howard">
+                                <div>
+                                    <h5 class="text-truncate">Esther Howard accepted your friend</h5>
+                                    <span>July 15 2021 04:05 PM</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="user-details">
+                                <img src="./images/darrell-steward.png" alt="darrell-steward">
+                                <div>
+                                    <h5 class="text-truncate">Darrell Steward commented on you</h5>
+                                    <span>May 25 2021 10:14 AM</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="user-details">
+                                <img src="./images/bessie-cooper.png" alt="bessie-cooper">
+                                <div>
+                                    <h5 class="text-truncate">Bessie Cooper started following you</h5>
+                                    <span>February 01 08:56 PM</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="user-details">
+                                <img src="./images/jenny-wilson.png" alt="jenny">
+                                <div>
+                                    <h5 class="text-truncate">Jenny Wilson likes your post</h5>
+                                    <span>December 25 2020 06:12 PM</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <div class="dropdown-footer">
+                     <a href="#" class="btn-dark">VIEW ALL</a>
+                    </div>  
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <button class="user-btn dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" title="View Profile">
+                    <img src="./images/john-smith-image.png" alt="john-image" class="user-img">
+                    <p>John Smith</p><img src="./images/profile-dropdown-icon.svg" alt="dropdown" class="dropdown-img">
+                </button>
+                <ul class="dropdown-menu user-dropdown dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">My Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Help</a></li>
+                    <li><a class="dropdown-item" href="./login.html">Logout</a></li>
+                </ul>
+            </div>
+        </header>
+        
+        <div class="search-box">
+            <input type="search" class="form-control" placeholder="Search" />
+        </div>
+        <!-- End-Dashboard-Header -->
+
+        <!-- Start-Sidebar -->
+        <nav class="navbar">
+            <ul class="nav flex-column">
+                <li class="active">
+                    <a class="nav-link" href="./dashboard.html" title="Click to Dashboard">
+                        <img src="./images/dashboard-default-icon.svg" alt="dashboard" class="default-icon">
+                        <img src="./images/dashboard-active-icon.svg"alt="dashboard" class="active-icon">
+                        Dashboard</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="./innerpage.html" title="Click to Transactions">
+                        <img src="./images/transactions-default-icon.svg" alt="transactions" class="default-icon">
+                        <img src="./images/transactions-active-icon.svg" alt="transactions" class="active-icon">    
+                        Transactions</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#" title="Click to Statistics">
+                        <img src="./images/statistics-default-icon.svg" alt="statistics" class="default-icon">
+                        <img src="./images/statistics-active-icon.svg" alt="statistics" class="active-icon">
+                        Statistics</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#" title="Click to Product">
+                        <img src="./images/product-default-icon.svg" alt="product" class="default-icon">
+                        <img src="./images/product-active-icon.svg" alt="product" class="active-icon"> 
+                        Product</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#" title="Click to Offers">
+                        <img src="./images/offers-default-icon.svg" alt="offers"class="default-icon">
+                        <img src="./images/offers-active-icon.svg" alt="offers" class="active-icon">
+                        Offers</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#" title="Click to Settings">
+                        <img src="./images/settings-default-icon.svg" alt="setting"class="default-icon">
+                        <img src="./images/settings-active-icon.svg" alt="setting" class="active-icon">
+                        Settings</a>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- End-Sidebar -->
+
+        <!-- Start-Main-Content -->
+        <div class="main-content">
+            <div class="card statistics-card">
+                <div class="row g-0">
+                    <div class="col-sm-6 col-xl statistics">
+                        <div class="statistics-image">
+                            <img src="./images/revenue-icon.svg" alt="revenue">
+                        </div>
+                        <div class="details">
+                            <h5>$95K</h5>
+                            <p>Revenue</p>
+                        </div>
+                        <span class="growth-up"><img src="./images/growth-up-arrow.svg" alt="growth-up">5.2
+                            %</span>
+                    </div>
+                    <div class="col-sm-6 col-xl statistics">
+                        <div class="statistics-image">
+                            <img src="./images/growth-rate-icon.svg" alt="growth-rate">
+                        </div>
+                        <div class="details">
+                            <h5>18.63%</h5>
+                            <p>Growth Rate</p>
+                        </div>
+                        <span class="growth-down"><img src="./images/growth-down-arrow.svg" alt="growth-down">2.0
+                            %</span>
+                    </div>
+                    <div class="col-sm-6 col-xl statistics">
+                        <div class="statistics-image">
+                            <img src="./images/sales-icon.svg" alt="sales-icon">
+                        </div>
+                        <div class="details">
+                            <h5>$27K</h5>
+                            <p>Sales</p>
+                        </div>
+                        <span class="growth-up"><img src="./images/growth-up-arrow.svg" alt="growth-up">10.0
+                            %</span>
+                    </div>
+                    <div class="col-sm-6 col-xl statistics">
+                        <div class="statistics-image">
+                            <img src="./images/order-icon.svg" alt="order-icon">
+                        </div>
+                        <div class="details">
+                            <h5>13700</h5>
+                            <p>Orders</p>
+                        </div>
+                        <span class="growth-up"><img src="./images/growth-up-arrow.svg" alt="growth-up">13.6
+                            %</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row gutter">
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-title power-card-title">
+                            <h6>Power Consumption <span>(KWh/100km)</span></h6>
+                            <div class="button-list">
+                                <button type="button" class="active">Week</button>
+                                <button type="button">Month</button>
+                            </div>
+                        </div>
+                        <img src="./images/power-consuption-chart.png" alt="chart" class="power-chart">
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card tracking-card">
+                        <ul class="nav nav-tabs" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="tab1" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">Charts</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab2" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">Tracking</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                aria-labelledby="tab1">
+                                <div class="d-flex ms-2">
+                                    <div class="chart-details">
+                                        <h6>1934</h6>
+                                        <p>Sales</p>
+                                    </div>
+                                    <span class="growth-up"><img src="./images/growth-up-arrow.svg"
+                                            alt="growth-up-arrow">10.0 %</span>
+                                </div>
+                                <img src="./images/tracking-graph.png" alt="tracking-graph" class="tracking-graph">
+                            </div>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="tab2">
+                                <div class="d-flex ms-2">
+                                    <div class="chart-details">
+                                        <h6>1934</h6>
+                                        <p>Sales</p>
+                                    </div>
+                                    <span class="growth-up"><img src="./images/growth-up-arrow.svg"
+                                            alt="growth-up-arrow">10.0 %</span>
+                                        </div>
+                                        <img src="./images/tracking-graph.png" alt="tracking-graph" class="tracking-graph">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card regional-statistics-card">
+                        <h5>Regional Statistics</h5>
+                        <div class="regional-graph">
+                            <div class="graph-details">
+                                <h6>$6.9K</h6>
+                                <p>Total</p>
+                            </div>
+                        </div>
+                        <div class="row g-0">
+                            <div class="col">
+                                <div class="details">
+                                    <h6>$6.9K</h6>
+                                    <p>Revenue</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="details">
+                                    <h6>25</h6>
+                                    <p>Sales</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="details">
+                                    <h6>11</h6>
+                                    <p>Products</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gutter">
+                <div class="col-xl-8">
+                    <div class="card">
+                        <div class="card-title">
+                            <h6>Active Users</h6>
+                            <div class="dropdown">
+                                <button class="more-btn dropdown-toggle" type="button"
+                                 data-bs-toggle="dropdown" aria-expanded="false"
+                                    title="View Options">
+                                    <img src="./images/table-dropdown.svg" alt="table-dropdown">
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="#">item 1</a></li>
+                                    <li><a class="dropdown-item" href="#">item 2</a></li>
+                                    <li><a class="dropdown-item" href="#">item 3</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Availabale Data</th>
+                                        <th scope="col">Downloads</th>
+                                        <th scope="col" class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Smith</td>
+                                        <td>John.smith@company.com</td>
+                                        <td>450 MB</td>
+                                        <td>55%</td>
+                                        <td class="text-center"><span class="success">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>David Bough</td>
+                                        <td>david.bough@company.com</td>
+                                        <td>457 MB</td>
+                                        <td>65%</td>
+                                        <td class="text-center"><span class="danger">Block</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kevin Archer</td>
+                                        <td>kevin.archer@gmail.com</td>
+                                        <td>231 MB</td>
+                                        <td>75%</td>
+                                        <td class="text-center"><span class="success">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sara Ovens</td>
+                                        <td>sara.ovens@company.com</td>
+                                        <td>120 MB</td>
+                                        <td>25%</td>
+                                        <td class="text-center"><span class="warning">Reported</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ziva Foakes</td>
+                                        <td>ziva.foakes@gmail.com</td>
+                                        <td>552 MB</td>
+                                        <td>85%</td>
+                                        <td class="text-center"><span class="danger">Block</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card task-card">
+                        <div class="card-title">
+                            <h6>My Tasks</h6>
+                        </div>
+                        <ul>
+                            <li>
+
+                                <div class="tasks">
+                                    <h6>Make new icons</h6>
+                                    <p>Web Apps</p>
+                                </div>
+                                <p class="time">5 hours ago</p>
+                            </li>
+                            <li>
+                                <div class="tasks">
+                                    <h6>Design exploration</h6>
+                                    <p>Company website</p>
+                                </div>
+                                <p class="time">2 days ago</p>
+                            </li>
+                            <li>
+                                <div class="tasks">
+                                    <h6>Software update</h6>
+                                    <p>Prototype</p>
+                                </div>
+                                <p class="time">5 days ago</p>
+                            </li>
+                            <li>
+                                <div class="tasks">
+                                    <h6>High resolution images</h6>
+                                    <p>Website banners</p>
+                                </div>
+                                <p class="time">10 days ago</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End-Main-Content -->
+
+    </div>
+    <!-- End-Dashboard-Page -->
+
+    <!-- JavaScripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
